@@ -3,7 +3,7 @@ using Domain.Enums;
 using Domain.Interfaces.InfrastructureInterfaces;
 using System.Data;
 
-namespace Repo
+namespace Infrastructure.Repo
 {
     public class BaseRepo<T> : IBaseRepo<T>
     {

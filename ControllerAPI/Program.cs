@@ -5,6 +5,7 @@ using Domain.Interfaces.AppicationInterfaces;
 using Domain.Interfaces.ApplicationInterfaces;
 using Domain.Interfaces.InfrastructureInterfaces;
 using Domain.Resource;
+using Infrastructure.Repo;
 using Microsoft.AspNetCore.Mvc;
 using Repo;
 using System.Text.Json;
