@@ -1,10 +1,10 @@
-﻿using Domain.Interfaces.DLInterfaces;
+﻿using Domain.Interfaces.InfrastructureInterfaces;
 using Microsoft.Extensions.Configuration;
 using System.Data.Common;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DL
+namespace Repo
 {
     public sealed class UnitOfWork : IUnitOfWork
     {

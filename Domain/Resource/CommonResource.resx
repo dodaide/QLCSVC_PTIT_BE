@@ -123,6 +123,9 @@
   <data name="NotEmptyMessage" xml:space="preserve">
     <value>{0} không được phép để trống</value>
   </data>
+  <data name="UserError" xml:space="preserve">
+    <value>Lỗi nhập từ người dùng</value>
+  </data>
   <data name="ValidateMessage" xml:space="preserve">
     <value>Thông tin gửi lên không hợp lệ</value>
   </data>

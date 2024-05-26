@@ -79,6 +79,15 @@ namespace Domain.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lỗi nhập từ người dùng.
+        /// </summary>
+        public static string UserError {
+            get {
+                return ResourceManager.GetString("UserError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thông tin gửi lên không hợp lệ.
         /// </summary>
         public static string ValidateMessage {
