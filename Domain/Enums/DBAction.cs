@@ -7,5 +7,7 @@ public enum DBAction
     Update,
     Delete,
     GetDetails,
-    GetNewID
+    GetDetail,
+    GetNewID,
+    GetAllPagination
 }

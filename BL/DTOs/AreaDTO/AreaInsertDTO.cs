@@ -1,12 +1,9 @@
-﻿
-using Application.DTOs.AreaCampusDTO;
-using Domain.Entities;
+﻿using Application.DTOs.AreaCampusDTO;
 
-namespace Application.DTOs.AreaDTO
+namespace Application.DTOs.AreaDTO;
+
+public class AreaInsertDTO
 {
-    public class AreaInsertDTO
-    {
-        public AreaInsertMasterDTO Area { get; set; }
-        public List<AreaCampusSaveDTO> Details { get; set; }
-    }
+    public AreaInsertMasterDTO Area { get; set; }
+    public List<AreaCampusSaveDTO> Details { get; set; }
 }
