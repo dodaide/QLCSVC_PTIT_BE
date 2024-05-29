@@ -34,14 +34,14 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Insert(DeviceDTO deviceDto)
     {
-        var res = await userService.InsertSingleRecord(deviceDto);
+        var res = await userService.Insert(deviceDto);
         return StatusCode(201, res);
     }
 
     [HttpPut]
     public async Task<IActionResult> Update(DeviceDTO deviceDto)
     {
-        var res = await userService.UpdateSingleRecord(deviceDto);
+        var res = await userService.Update(deviceDto);
         return Ok(res);
     }
 

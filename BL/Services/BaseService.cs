@@ -37,17 +37,20 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
         return resDTO;
     }
 
-    public async Task<int> UpdateSingleRecord<DTO>(DTO dto)
+    public async Task<int> Update<DTO>(DTO dto)
     {
         var t = mapper.Map<T>(dto);
-        var res = await baseRepo.Update(t);
-        return res;
+        Validate(t);    
+        await baseRepo.Update(t);
+        ResetCache();
+        return 1;
     }
 
     public virtual async Task<int> Delete<DTO>(DTO dto)
     {
         var t = mapper.Map<T>(dto);
         var res = await baseRepo.Delete(t);
+        ResetCache();
         return res;
     }
 
@@ -67,6 +70,7 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
             }
 
             await unitOfWork.CommitAsync();
+            ResetCache();
             return 1;
         }
         catch (Exception)
@@ -76,11 +80,13 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
         }
     }
 
-    public async Task<int> InsertSingleRecord<DTO>(DTO dto)
+    public async Task<int> Insert<DTO>(DTO dto)
     {
         var t = mapper.Map<T>(dto);
-        var res = await baseRepo.Insert(t);
-        return res;
+        Validate(t);
+        await baseRepo.Insert(t);
+        ResetCache();
+        return 1;
     }
 
     public virtual async Task<int> Update<DTO, DTODetail>(DTO dto, List<DTODetail> detailDTOs)
@@ -120,6 +126,7 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
                 }
 
             await unitOfWork.CommitAsync();
+            ResetCache();
             return 1;
         }
         catch (Exception)
@@ -152,6 +159,10 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
     }
 
     protected virtual void CustomValidate(T t, List<TDetail>? tDetails = null)
+    {
+    }
+
+    protected async virtual void ResetCache()
     {
     }
 }
