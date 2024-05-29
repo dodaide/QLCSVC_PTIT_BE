@@ -1,8 +1,6 @@
-using Domain.Interfaces.DomainInterfaces;
+﻿namespace Application.DTOs.UserDTO;
 
-namespace Domain.Entities;
-
-public class User: IHasID
+public class UserDTO
 {
     public int UserID { get; set; } 
     public int UserType { get; set; } 
@@ -13,13 +11,4 @@ public class User: IHasID
     public string Email { get; set; }
     public bool IsDeleted { get; set; }
     public DateTime CreatedTime { get; set; }
-    public int GetID()
-    {
-        return UserID;
-    }
-
-    public void SetID(int id)
-    {
-        UserID = id;
-    }
 }

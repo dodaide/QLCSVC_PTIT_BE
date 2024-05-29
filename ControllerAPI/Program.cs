@@ -1,4 +1,6 @@
-﻿using Application.Services;
+﻿using System.Text.Encodings.Web;
+using System.Text.Json;
+using Application.Services;
 using Controller.Middleware;
 using Domain.Entities;
 using Domain.Interfaces.AppicationInterfaces;
@@ -8,7 +10,6 @@ using Domain.Resource;
 using Infrastructure.Repo;
 using Microsoft.AspNetCore.Mvc;
 using Repo;
-using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(typeof(IBaseRepo<>), typeof(BaseRepo<>));
 builder.Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
 builder.Services.AddScoped<ICampusService, CampusService>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Đăng ký dịch vụ CORS
@@ -49,7 +52,7 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(option =>
     option.InvalidModelStateResponseFactory = context =>
     {
         var errors = context.ModelState.Values.SelectMany(x => x.Errors);
-        var newException = new BaseException()
+        var newException = new BaseException
         {
             ErrorCode = 400,
             UserMessage = CommonResource.UserError,
@@ -60,7 +63,7 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(option =>
         };
         var json = JsonSerializer.Serialize(newException, new JsonSerializerOptions
         {
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             WriteIndented = true
         });
         return new BadRequestObjectResult(json);

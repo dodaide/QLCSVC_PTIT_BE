@@ -1,21 +1,14 @@
-﻿using Application.DTOs.AreaDTO;
-using Application.DTOs.AreaCampusDTO;
+﻿using Application.DTOs.AreaCampusDTO;
 using AutoMapper;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Profiles
+namespace Application.Profiles;
+
+public class AreaCampusProfile : Profile
 {
-    public class AreaCampusProfile : Profile
+    public AreaCampusProfile()
     {
-        public AreaCampusProfile()
-        {
-            CreateMap<AreaCampus, AreaCampusGetDetailsDTO>();
-            CreateMap<AreaCampusSaveDTO, AreaCampus>();
-        }
+        CreateMap<AreaCampus, AreaCampusGetDetailsDTO>();
+        CreateMap<AreaCampusSaveDTO, AreaCampus>();
     }
 }

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.DTOs.AreaDTO;
 
-namespace Application.DTOs.AreaDTO
+public class AreaGetAllDTO
 {
-    public class AreaGetAllDTO
-    {
-        public int AreaID { get; set; }
-        public string AreaCode { get; set; }
-        public string AreaName { get; set; }
-        public bool IsDeleted { get; set; }
-    }
+    public int AreaID { get; set; }
+    public string AreaCode { get; set; }
+    public string AreaName { get; set; }
+    public bool IsDeleted { get; set; }
 }

@@ -17,7 +17,8 @@ public class UserRepo
     public async Task<User> GetUserAsync(string username)
     {
         var storeName = "Proc_GetUserName_Password";
-        var res = await unitOfWork.Connection.QueryFirstOrDefaultAsync<User>(storeName, new { Username = username }, commandType: CommandType.StoredProcedure);
+        var res = await unitOfWork.Connection.QueryFirstOrDefaultAsync<User>(storeName, new { Username = username },
+            commandType: CommandType.StoredProcedure);
         return res;
     }
 }

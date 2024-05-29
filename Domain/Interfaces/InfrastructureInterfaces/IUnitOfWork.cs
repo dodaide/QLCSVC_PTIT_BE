@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Common;
 
-namespace Domain.Interfaces.InfrastructureInterfaces
+namespace Domain.Interfaces.InfrastructureInterfaces;
+
+public interface IUnitOfWork : IDisposable, IAsyncDisposable
 {
-    public interface IUnitOfWork : IDisposable, IAsyncDisposable
-    {
-        DbConnection Connection { get; }
-        DbTransaction? Transaction { get; }
-        Task CommitAsync();
-        Task BeginTransactionAsync();
-        Task RollbackAsync();
-    }
+    DbConnection Connection { get; }
+    DbTransaction? Transaction { get; }
+    Task CommitAsync();
+    Task BeginTransactionAsync();
+    Task RollbackAsync();
 }
