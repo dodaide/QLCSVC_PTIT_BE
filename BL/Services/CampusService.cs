@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.DTOs.Campus;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces.AppicationInterfaces;
 using Domain.Interfaces.InfrastructureInterfaces;
@@ -8,6 +9,8 @@ namespace Application.Services;
 
 public class CampusService : BaseService<Campus, Campus>, ICampusService
 {
+    private readonly string cacheKey = "ProcessedCampuses";
+
     public CampusService(IBaseRepo<Campus> iBaseRepo, IBaseRepo<Campus> iBaseDetailRepo, IUnitOfWork iUnitOfWork,
         IMapper iMapper, IMemoryCache iMemoryCache) : base(iBaseRepo, iBaseDetailRepo, iUnitOfWork, iMapper,
         iMemoryCache)
@@ -16,7 +19,6 @@ public class CampusService : BaseService<Campus, Campus>, ICampusService
 
     public override async Task<IEnumerable<DTO>> GetAll<DTO>()
     {
-        const string cacheKey = "ProcessedCampuses";
         if (!memoryCache.TryGetValue(cacheKey, out List<DTO> processedCampuses))
         {
             var campus = await base.GetAll<Campus>();
@@ -56,5 +58,10 @@ public class CampusService : BaseService<Campus, Campus>, ICampusService
         var campusesDTO = mapper.Map<List<DTO>>(campuses);
 
         return campusesDTO;
+    }
+
+    protected override void ResetCache()
+    {
+        memoryCache.Remove(cacheKey);
     }
 }

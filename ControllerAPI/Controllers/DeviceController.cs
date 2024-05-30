@@ -26,7 +26,7 @@ public class DeviceController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Insert(DeviceDTO deviceDto)
     {
-        var res = await deviceService.InsertSingleRecord(deviceDto);
+        var res = await deviceService.Insert(deviceDto);
         return StatusCode(201, res);
     }
     
@@ -50,7 +50,7 @@ public class DeviceController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> Update(DeviceDTO deviceDto)
     {
-        var res = await deviceService.UpdateSingleRecord(deviceDto);
+        var res = await deviceService.Update(deviceDto);
         return Ok(res);
     }
 

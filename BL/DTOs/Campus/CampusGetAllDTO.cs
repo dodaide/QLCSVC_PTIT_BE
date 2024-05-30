@@ -7,7 +7,7 @@ public class CampusGetAllDTO
     public string CampusName { get; set; }
     public string CampusCode { get; set; }
     public string? Description { get; set; }
-    public string CampusType { get; set; }
+    public int CampusType { get; set; }
     public int SeatNumber { get; set; }
     public bool IsDeleted { get; set; }
 }

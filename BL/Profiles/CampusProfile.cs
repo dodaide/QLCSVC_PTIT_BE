@@ -9,5 +9,8 @@ public class CampusProfile : Profile
     public CampusProfile()
     {
         CreateMap<Campus, CampusGetAllDTO>();
+        CreateMap<CampusInsertDTO, Campus>();
+        CreateMap<CampusUpdateDTO, Campus>();
+        CreateMap<CampusDeleteDTO, Campus>();
     }
 }
