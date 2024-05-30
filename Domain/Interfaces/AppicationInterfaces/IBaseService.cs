@@ -9,5 +9,4 @@ public interface IBaseService<T, TDetail>
     Task<int> UpdateSingleRecord<DTO>(DTO t); 
     Task<int> Delete<DTO>(DTO id);
     Task<IEnumerable<DTO>> GetDetailsByID<DTO>(int id);
-    Task<IEnumerable<DTO>> GetByID<DTO>(int id);
 }

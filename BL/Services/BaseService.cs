@@ -136,15 +136,6 @@ public class BaseService<T, TDetail> : IBaseService<T, TDetail> where T : IHasID
         return resDTO;
     }
 
-    public async Task<IEnumerable<DTO>> GetByID<DTO>(int id)
-    {
-        var parameters = new DynamicParameters();
-        parameters.Add("@DeviceID", id);
-        var res = await baseRepo.GetDetailByID(parameters);
-        var resDTO = mapper.Map<IEnumerable<DTO>>(res);
-        return resDTO;
-    }
-
     protected virtual void Validate(T t, List<TDetail>? tDetails = null)
     {
         CustomValidate(t, tDetails);

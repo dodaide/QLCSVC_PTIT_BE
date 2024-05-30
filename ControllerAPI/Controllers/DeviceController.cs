@@ -1,6 +1,4 @@
-﻿using Application.DTOs.AreaCampusDTO;
-using Application.DTOs.AreaDTO;
-using Application.DTOs.DeviceDTO;
+﻿using Application.DTOs.DeviceDTO;
 using Domain.Interfaces.AppicationInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,13 +22,6 @@ public class DeviceController : ControllerBase
         var res = await deviceService.GetDevices<DeviceDTO>(pageNumber, pageSize, campusID);
         return Ok(res);
     }
-
-    // [HttpGet("details")]
-    // public async Task<IActionResult> GetDetails(int id)
-    // {
-    //     var res = await deviceService.GetDetailsByID<AreaCampusGetDetailsDTO>(id);
-    //     return Ok(res);
-    // }
 
     [HttpPost]
     public async Task<IActionResult> Insert(DeviceDTO deviceDto)
